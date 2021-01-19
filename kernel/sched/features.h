@@ -16,7 +16,7 @@ SCHED_FEAT(START_DEBIT, true)
  * wakeup-preemption), since its likely going to consume data we
  * touched, increases cache locality.
  */
-SCHED_FEAT(NEXT_BUDDY, false)
+SCHED_FEAT(NEXT_BUDDY, true)
 
 /*
  * Prefer to schedule the task that ran last (when we did
@@ -76,7 +76,7 @@ SCHED_FEAT(RT_PUSH_IPI, true)
 #endif
 
 SCHED_FEAT(FORCE_SD_OVERLAP, false)
-SCHED_FEAT(RT_RUNTIME_SHARE, true)
+SCHED_FEAT(RT_RUNTIME_SHARE, false)
 SCHED_FEAT(LB_MIN, false)
 SCHED_FEAT(ATTACH_AGE_LOAD, true)
 
@@ -103,10 +103,10 @@ SCHED_FEAT(MIN_CAPACITY_CAPPING, false)
  * ON: If the target CPU saves any energy, use that.
  * OFF: Use whichever of target or backup saves most.
  */
-SCHED_FEAT(FBT_STRICT_ORDER, false)
+SCHED_FEAT(FBT_STRICT_ORDER, true)
 /*
  * Enforce schedtune.prefer_idle to take need_idle path.
  * ON: schedtune.prefer_idle is replaced with need_idle
  * OFF: schedtune.prefer_idle is honored as is.
  */
-SCHED_FEAT(EAS_USE_NEED_IDLE, true)
+SCHED_FEAT(EAS_USE_NEED_IDLE, false)
