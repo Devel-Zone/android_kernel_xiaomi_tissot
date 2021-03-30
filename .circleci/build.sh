@@ -26,7 +26,7 @@ read -r -d '' MESSAGE <<-_EOL_
 <strong>Build Initiated!</strong>
 <strong>@</strong> $(date "+%I:%M%p") ($(date +"%Z%:z"))
 <strong>CPUs :</strong> $(nproc --all) <strong>|</strong> <strong>RAM :</strong> $(awk '/MemTotal/ { printf "%.1f \n", $2/1024/1024 }' /proc/meminfo)GB
-<strong>Building :</strong> Perf+
+<strong>Building :</strong> Murgi+
 <strong>Device :</strong> tissot
 <strong>Host :</strong> ${KBUILD_BUILD_HOST}
 <strong>User :</strong> @${KBUILD_BUILD_USER}
