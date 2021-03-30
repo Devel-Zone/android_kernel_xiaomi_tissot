@@ -14,6 +14,9 @@ TANGGAL=$(date +"%Y%m%d-%H")
 export PATH="$(pwd)/clang/bin:$PATH"
 export KBUILD_COMPILER_STRING="$($KERNEL_DIR/clang/bin/clang --version | head -n 1 | perl -pe 's/\((?:http|git).*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
 export ARCH=arm64
+export SUBARCH=arm64
+KERNEL_DEFCONFIG=tissot_defconfig
+MAKE="./makeparallel" # Speed up build process
 
 ### Start Build ###
 BUILD_START_DATE=$(date +"%Y%m%d")
@@ -40,7 +43,7 @@ echo "Done"
 
 # Start compiling
 function compile() {
-    make -j$(nproc --all) O=out ARCH=arm64 tissot_defconfig
+    make -j$(nproc --all) O=out ARCH=arm64 $KERNEL_DEFCONFIG
     make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC=clang \
