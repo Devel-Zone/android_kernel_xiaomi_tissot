@@ -2,7 +2,13 @@
 #
 ## By @Sohil876
 #
-
+# Clone deps
+echo "Cloning dependencies"
+git clone --depth=1 -b 11.0 https://github.com/Devel-Zone/android_kernel_xiaomi_tissot kernel --single-branch
+cd kernel
+git clone --depth=1 -b master https://github.com/kdrag0n/proton-clang clang --single-branch
+git clone https://github.com/MASTERGUY/AnyKernel3 -b tissot --depth=1 AnyKernel --single-branch
+echo "Done"
 ### Vars ###
 export KBUILD_BUILD_USER=Sohil876
 export KBUILD_BUILD_HOST=CircleCI
@@ -32,14 +38,6 @@ read -r -d '' MESSAGE <<-_EOL_
 <strong>User :</strong> @${KBUILD_BUILD_USER}
 _EOL_
 curl -s -X POST -d chat_id="${CHAT_ID}" -d parse_mode=html -d text="${MESSAGE}" -d disable_web_page_preview="true" https://api.telegram.org/bot"${TOKEN}"/sendMessage
-
-# Clone dependencies
-echo "Cloning dependencies"
-git clone --depth=1 -b 11.0 https://github.com/Sohil876/android_kernel_xiaomi_tissot kernel --single-branch
-cd kernel
-git clone --depth=1 -b master https://github.com/kdrag0n/proton-clang clang
-git clone https://github.com/MASTERGUY/AnyKernel3 -b tissot --depth=1 AnyKernel
-echo "Done"
 
 # Start compiling
 function compile() {
